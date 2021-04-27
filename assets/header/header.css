@@ -1,0 +1,21 @@
+.navigation {
+    background-color: #474d59;
+    color: #ffffff;
+}
+
+.page-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.nav-logo {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.nav-menu {
+    padding: 10px;
+    border: 1px solid #ffffff;
+}
