@@ -1,21 +1,22 @@
 .navigation {
     background-color: #474d59;
     color: #ffffff;
+
 }
 
-.page-navigation {
+.div-block {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
 }
 
-.nav-logo {
-    padding: 10px;
+.header-name {
     font-size: 1.5em;
 }
 
-.nav-menu {
-    padding: 10px;
+.header-menu {
     border: 1px solid #ffffff;
+    border-radius: 5%;
+    padding: 5px;
 }
