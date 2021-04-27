@@ -4,14 +4,13 @@
 
 .container-name {
     font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
 .movie-image {
     width: 210px;
-    margin-bottom: 10px;
     box-shadow: 0 1px 5px #474d59;
+    margin-left: 5px;
+    margin-bottom: 10px;
 }
 
-.movie-image + .movie-image {
-    margin-left: 5px;
-}
