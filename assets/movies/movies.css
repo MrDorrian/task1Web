@@ -1,3 +1,7 @@
-img {
-    width: 50px;
+.container-name {
+    font-size: 1.5em;
+}
+
+.image {
+    width: 200px;
 }
