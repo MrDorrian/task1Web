@@ -20,6 +20,7 @@ function createMovies(data) {
 
 function createCardImage(movie) {
     const {id, original_title, backdrop_path} = movie;
+    const p = document.createElement(('p'));
     const img = document.createElement('img');
 
     if (backdrop_path === null) {
@@ -30,9 +31,13 @@ function createCardImage(movie) {
         img.setAttribute('src', poster_url);
     }
 
-    img.setAttribute('id', id);
-    img.setAttribute('alt', original_title);
+    img.setAttribute('id', 'imageMovie');
+    img.setAttribute('alt', original_title + id);
     img.classList.add('movie-image');
+
+    p.classList.add('display-hidden');
+    p.textContent = original_title;
+    img.append(p);
     return img;
 }
 
@@ -43,6 +48,13 @@ getData(BASE_URL_DATA)
         console.log(data)
     });
 
+// let imgHover = document.getElementById('imageMovie');
+// imgHover.addEventListener('click', (e) => {
+//     console.log(e.target);
+// })
+movies.addEventListener('mouseenter', (e) => {
+    console.log(e.target.children);
+})
 
 const btnPrev = document.getElementById('prev');
 const btnNext = document.getElementById('next');
