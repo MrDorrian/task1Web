@@ -9,7 +9,7 @@
 }
 
 .movie-image {
-    box-shadow: 0 1px 5px var(--text-color);
+    box-shadow: 0 3px 5px var(--text-color);
     margin-bottom: 10px;
 }
 
@@ -22,10 +22,12 @@
 @media screen and (min-width: 776px ) {
     .container-name {
         font-size: 1.5em;
+        margin-left: 10px;
     }
 
     .movie-image {
         margin-left: 10px;
+        width: 322px;
     }
 
     .display-flex {
