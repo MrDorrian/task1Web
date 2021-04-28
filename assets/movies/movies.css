@@ -3,17 +3,20 @@
 }
 
 .container-name {
-    font-size: 3em;
+    font-size: 1.5em;
     margin-bottom: 10px;
     color: var(--second-text-color);
 }
 
 .movie-image {
-    max-width: 750px;
-    max-height: 350px;
     box-shadow: 0 1px 5px var(--text-color);
-    margin-left: 10px;
     margin-bottom: 10px;
+}
+
+.display-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 @media screen and (min-width: 776px ) {
@@ -22,7 +25,12 @@
     }
 
     .movie-image {
-        max-width: 250px;
-        max-height: 150px;
+        margin-left: 10px;
     }
+
+    .display-flex {
+        display: block;
+    }
+
 }
+

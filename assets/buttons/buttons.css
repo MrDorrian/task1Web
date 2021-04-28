@@ -1,12 +1,14 @@
 .footer-btn {
     display: flex;
     justify-content: center;
+
 }
 
 .button-footer {
     padding: 15px 50px;
     border: 1px solid var(--text-color);
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .button-footer + .button-footer {
