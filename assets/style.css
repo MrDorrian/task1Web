@@ -3,3 +3,9 @@
 @import url('header/header.css');
 @import url('movies/movies.css');
 @import url('buttons/buttons.css');
+
+:root {
+    --background-color: #474d59;
+    --text-color: #bdbdbd;
+    --second-text-color: #5c5a5a;
+}

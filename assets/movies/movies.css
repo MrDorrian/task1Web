@@ -5,12 +5,14 @@
 .container-name {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: var(--second-text-color);
 }
 
 .movie-image {
-    width: 210px;
-    box-shadow: 0 1px 5px #474d59;
-    margin-left: 5px;
+    max-width: 250px;
+    max-height: 150px;
+    box-shadow: 0 1px 5px var(--text-color);
+    margin-left: 10px;
     margin-bottom: 10px;
 }
 

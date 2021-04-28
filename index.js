@@ -1,26 +1,40 @@
 'use strict'
-
-let dataBase = [];
-fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c')
-    .then(response => response.json())
-    .then(data => dataBase = data.results);
-
+const BASE_URL_DATA = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US&page=2';
 const movies = document.getElementById('root');
-const timeId = setInterval(() => {
-    const newMovie = dataBase.map((movie) => createCardImage(movie));
+
+function getData(url) {
+    return fetch(url);
+
+}
+
+function createMovies(data) {
+    const newMovie = data.results.map((movie) => createCardImage(movie));
     movies.append(...newMovie);
-    console.log(dataBase);
-}, 2000);
-setTimeout(() => clearInterval(timeId), 3000);
+    console.log(data);
+}
 
 function createCardImage(movie) {
-    const {original_title, backdrop_path} = movie;
-    const poster_url = 'https://image.tmdb.org/t/p/w342' + `${backdrop_path}`;
+    const {id, original_title, backdrop_path} = movie;
     const img = document.createElement('img');
 
-    img.setAttribute('src', poster_url);
+    if (backdrop_path === null) {
+        const poster_url = './assets/img/Aw07IupDF1ubyVNrcWwDPbnCQRP.jpg';
+        img.setAttribute('src', poster_url);
+    } else {
+        const poster_url = 'https://image.tmdb.org/t/p/w300' + `${backdrop_path}`;
+        img.setAttribute('src', poster_url);
+    }
+
+    img.setAttribute('id', id);
     img.setAttribute('alt', original_title);
     img.classList.add('movie-image');
-
     return img;
 }
+
+getData(BASE_URL_DATA)
+    .then(response => response.json())
+    .then(data => createMovies(data));
+
+const btnPrev = document.getElementById('prev');
+const btnNext = document.getElementById('next');
+
