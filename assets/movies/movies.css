@@ -25,6 +25,25 @@
     display: none;
 }
 
+.display-inline {
+    position: relative;
+}
+
+.display-inline:hover > img {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.display-inline:hover > p {
+    position: absolute;
+    z-index: 1;
+    top: 150px;
+    left: 40px;
+    color: red;
+    font-size: 3em;
+    display: block;
+}
+
 
 @media screen and (min-width: 576px ) {
     .movie-image {
