@@ -8,14 +8,13 @@ const changeBtn = document.getElementById('pagination');
 
 
 function buttonsPagin(data) {
-    const {total_pages} = data;
+    const {page, total_pages} = data;
     const pagination = document.getElementById('pagination');
     const divPagination = document.createElement('div');
 
-    divPagination.classList.add('pagination-buttons', 'display-flex-buttons');
-
     for (let i = 1; i <= total_pages; i++) {
-        divPagination.textContent = CURRENT_PAGE;
+        divPagination.classList.add('pagination-buttons', 'display-flex-buttons');
+        divPagination.textContent = page;
         pagination.append(divPagination);
         i++;
     }
