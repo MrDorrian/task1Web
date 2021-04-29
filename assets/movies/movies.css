@@ -5,6 +5,7 @@
 .container-name {
     font-size: 1.5em;
     margin-bottom: 10px;
+    margin-left: 10px;
     color: var(--second-text-color);
 }
 
@@ -15,28 +16,57 @@
 
 .display-flex {
     display: flex;
-    flex-direction: column;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.display-hidden {
-    visibility: hidden;
+.display-none {
+    display: none;
 }
 
-@media screen and (min-width: 776px ) {
-    .container-name {
-        font-size: 1.5em;
-        margin-left: 10px;
-    }
 
+@media screen and (min-width: 576px ) {
     .movie-image {
         margin-left: 10px;
-        width: 322px;
+        width: 250px;
+        height: 350px;
     }
 
     .display-flex {
         display: block;
     }
 
+    .display-inline {
+        display: inline-block;
+    }
 }
 
+@media screen and (min-width: 776px ) {
+    .container-name {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .movie-image {
+        width: 349px;
+        height: 482px;
+
+    }
+}
+
+@media screen and ( min-width: 992px) {
+    .movie-image {
+        width: 304px;
+        height: 420px;
+
+    }
+}
+
+@media screen and ( min-width: 1200px) {
+    .movie-image {
+        width: 322px;
+        height: 482px;
+
+    }
+}

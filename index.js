@@ -15,46 +15,41 @@ function createMovies(data) {
     movies.innerText = '';
     newMovie = data.results.map((movie) => createCardImage(movie));
     movies.append(...newMovie);
-    // createBtnPagination(data);
 }
 
 function createCardImage(movie) {
-    const {id, original_title, backdrop_path} = movie;
-    const p = document.createElement(('p'));
+    const {id, original_title, backdrop_path, poster_path} = movie;
     const img = document.createElement('img');
+    const div = document.createElement('div');
+    const p = document.createElement('p');
+
 
     if (backdrop_path === null) {
-        const poster_url = './assets/img/Aw07IupDF1ubyVNrcWwDPbnCQRP.jpg';
+        const poster_url = './assets/img/unnamed.jpg';
         img.setAttribute('src', poster_url);
     } else {
-        const poster_url = 'https://image.tmdb.org/t/p/w300' + `${backdrop_path}`;
+        const poster_url = 'https://image.tmdb.org/t/p/w300' + `${poster_path}`;
         img.setAttribute('src', poster_url);
     }
 
-    img.setAttribute('id', 'imageMovie');
+    img.setAttribute('id', id);
     img.setAttribute('alt', original_title + id);
     img.classList.add('movie-image');
 
-    p.classList.add('display-hidden');
     p.textContent = original_title;
-    img.append(p);
-    return img;
+    p.classList.add('display-none');
+
+    div.classList.add('display-inline');
+    div.append(p, img);
+
+    return div;
 }
 
 getData(BASE_URL_DATA)
     .then(response => response.json())
     .then(data => {
         createMovies(data);
-        console.log(data)
     });
-
-// let imgHover = document.getElementById('imageMovie');
-// imgHover.addEventListener('click', (e) => {
-//     console.log(e.target);
-// })
-movies.addEventListener('mouseenter', (e) => {
-    console.log(e.target.children);
-})
 
 const btnPrev = document.getElementById('prev');
 const btnNext = document.getElementById('next');
@@ -78,7 +73,5 @@ btnNext.addEventListener('click', () => {
     startPage.textContent = `${CURRENT_PAGE}`;
 });
 
-function createBtnPagination(data, CURRENT_PAGE) {
 
 
-}
