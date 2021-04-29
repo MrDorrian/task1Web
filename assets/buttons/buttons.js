@@ -7,13 +7,14 @@ const nextBtn = document.getElementById('nextBtn');
 const changeBtn = document.getElementById('pagination');
 
 
-function buttonsPagin(totalDB) {
-    const {total_pages} = totalDB;
+function buttonsPagin(data) {
+    const {total_pages} = data;
     const pagination = document.getElementById('pagination');
     const divPagination = document.createElement('div');
 
+    divPagination.classList.add('pagination-buttons', 'display-flex-buttons');
+
     for (let i = 1; i <= total_pages; i++) {
-        divPagination.classList.add('pagination-buttons', 'display-flex-buttons');
         divPagination.textContent = CURRENT_PAGE;
         pagination.append(divPagination);
         i++;
@@ -36,11 +37,14 @@ firstBtn.addEventListener('click', () => {
 lastBtn.addEventListener('click', () => {
     const {total_pages} = totalDB;
     CURRENT_PAGE = total_pages;
-    getData(API_DATA + total_pages)
-        .then(response => response.json())
-        .then(data => {
-            createMovies(data);
-        });
+    if (CURRENT_PAGE <= total_pages) {
+        getData(API_DATA + total_pages)
+            .then(response => response.json())
+            .then(data => {
+                createMovies(data);
+            });
+    }
+
 })
 
 prevBtn.addEventListener('click', () => {

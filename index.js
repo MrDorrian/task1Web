@@ -13,7 +13,6 @@ function createMovies(data) {
     newMovie = [];
     movies.innerText = '';
     newMovie = data.results.map((movie) => createCardImage(movie));
-    buttonsPagin(totalDB);
     movies.append(...newMovie);
 }
 
@@ -50,6 +49,7 @@ getData(BASE_URL_DATA)
     .then(data => {
         totalDB = data;
         createMovies(data);
+        buttonsPagin(data);
     });
 
 
