@@ -1,8 +1,7 @@
 'use strict'
-const API_DATA = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US&page=';
-let CURRENT_PAGE = 1;
-const BASE_URL_DATA = `${API_DATA}` + `${CURRENT_PAGE}`;
+
 let newMovie = [];
+let totalDB = [];
 
 const movies = document.getElementById('root');
 
@@ -14,13 +13,14 @@ function createMovies(data) {
     newMovie = [];
     movies.innerText = '';
     newMovie = data.results.map((movie) => createCardImage(movie));
+    buttonsPagin(totalDB);
     movies.append(...newMovie);
 }
 
 function createCardImage(movie) {
     const {id, original_title, poster_path} = movie;
-    const img = document.createElement('img');
     const div = document.createElement('div');
+    const img = document.createElement('img');
     const p = document.createElement('p');
 
 
@@ -48,31 +48,9 @@ function createCardImage(movie) {
 getData(BASE_URL_DATA)
     .then(response => response.json())
     .then(data => {
+        totalDB = data;
         createMovies(data);
     });
 
-const btnPrev = document.getElementById('prev');
-const btnNext = document.getElementById('next');
-
-btnPrev.addEventListener('click', () => {
-    if (CURRENT_PAGE >= 2) {
-        CURRENT_PAGE--;
-        getData(API_DATA + CURRENT_PAGE)
-            .then(response => response.json())
-            .then(data => createMovies(data));
-    }
-});
-
-btnNext.addEventListener('click', () => {
-    ++CURRENT_PAGE;
-    getData(API_DATA + CURRENT_PAGE)
-        .then(response => response.json())
-        .then(data => createMovies(data));
-});
-
-
-//pagination
-
-console.log(newMovie)
 
 
