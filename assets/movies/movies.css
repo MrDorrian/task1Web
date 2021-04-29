@@ -37,10 +37,12 @@
 .display-inline:hover > p {
     position: absolute;
     z-index: 1;
+    text-shadow: black 0 2px 2px;
     top: 150px;
     left: 40px;
-    color: red;
+    color: #21a7eb;
     font-size: 3em;
+    font-weight: bold;
     display: block;
 }
 

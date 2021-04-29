@@ -18,13 +18,13 @@ function createMovies(data) {
 }
 
 function createCardImage(movie) {
-    const {id, original_title, backdrop_path, poster_path} = movie;
+    const {id, original_title, poster_path} = movie;
     const img = document.createElement('img');
     const div = document.createElement('div');
     const p = document.createElement('p');
 
 
-    if (backdrop_path === null) {
+    if (poster_path === null) {
         const poster_url = './assets/img/unnamed.jpg';
         img.setAttribute('src', poster_url);
     } else {
@@ -53,7 +53,6 @@ getData(BASE_URL_DATA)
 
 const btnPrev = document.getElementById('prev');
 const btnNext = document.getElementById('next');
-const startPage = document.getElementById('startPage');
 
 btnPrev.addEventListener('click', () => {
     if (CURRENT_PAGE >= 2) {
@@ -61,7 +60,6 @@ btnPrev.addEventListener('click', () => {
         getData(API_DATA + CURRENT_PAGE)
             .then(response => response.json())
             .then(data => createMovies(data));
-        startPage.textContent = `${CURRENT_PAGE}`;
     }
 });
 
@@ -70,7 +68,11 @@ btnNext.addEventListener('click', () => {
     getData(API_DATA + CURRENT_PAGE)
         .then(response => response.json())
         .then(data => createMovies(data));
-    startPage.textContent = `${CURRENT_PAGE}`;
 });
+
+
+//pagination
+
+console.log(newMovie)
 
 
