@@ -7,14 +7,29 @@
 .button-footer {
     padding: 15px 50px;
     border: 1px solid var(--text-color);
-    border-radius: 10px;
     margin-bottom: 10px;
-}
-
-.button-footer + .button-footer {
-    margin-left: 10px;
 }
 
 .button-footer:hover {
     box-shadow: 0 1px 5px var(--text-color);
+}
+
+.display-flex-buttons {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.pagination-buttons {
+    padding: 15px;
+    border: 1px solid var(--text-color);
+    margin: 0 0 10px 0;
+}
+
+.pagination-buttons:hover {
+    box-shadow: 0 1px 5px var(--text-color);
+}
+
+.green-text {
+    color: green;
 }
