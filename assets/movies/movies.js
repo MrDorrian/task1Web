@@ -1,13 +1,6 @@
 'use strict'
 
-let newMovie = [];
-let totalDB = [];
-
 const movies = document.getElementById('root');
-
-function getData(url) {
-    return fetch(url);
-}
 
 function createMovies(data) {
     newMovie = [];
@@ -32,7 +25,7 @@ function createCardImage(movie) {
     }
 
     img.setAttribute('id', id);
-    img.setAttribute('alt', original_title + id);
+    img.setAttribute('alt', original_title);
     img.classList.add('movie-image');
 
     p.textContent = original_title;
@@ -49,8 +42,5 @@ getData(BASE_URL_DATA)
     .then(data => {
         totalDB = data;
         createMovies(data);
-        buttonsPagin(data);
+        dataButtons(data);
     });
-
-
-
