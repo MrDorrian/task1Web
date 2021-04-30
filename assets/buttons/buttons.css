@@ -1,7 +1,6 @@
 .footer-btn {
     display: flex;
     justify-content: center;
-
 }
 
 .button-footer {
@@ -17,14 +16,14 @@
 .display-flex-buttons {
     display: flex;
     flex-direction: row;
-
 }
 
 .pagination-buttons {
-    padding: 10px;
+    padding-top: 15px;
     border: 1px solid var(--text-color);
     margin: 0 0 10px 0;
     width: 40px;
+    text-align: center;
 }
 
 .pagination-buttons:hover {
@@ -36,5 +35,9 @@
 }
 
 .new {
-    flex-wrap: wrap;
+    width: 400px;
+}
+
+.active {
+    background-color: green;
 }

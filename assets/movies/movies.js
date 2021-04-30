@@ -26,12 +26,13 @@ function createCardImage(movie) {
 
     img.setAttribute('id', id);
     img.setAttribute('alt', original_title);
+    img.dataset.id = id;
     img.classList.add('movie-image');
 
     p.textContent = original_title;
     p.classList.add('display-none');
 
-    div.classList.add('display-inline');
+    div.classList.add('display-relative');
     div.append(p, img);
 
     return div;

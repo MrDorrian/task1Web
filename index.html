@@ -9,7 +9,7 @@
     initial-scale=1.0"
     />
     <link rel="stylesheet" href="assets/style.css"/>
-    <title>Test1Page</title>
+    <title>Movies</title>
 </head>
 <body>
 <header class="navigation">
@@ -33,36 +33,38 @@
         </div>
     </div>
 </header>
-
-<section class="container-movies">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12">
-                <h2 class="container-name">Latest Releases</h2>
-                <div id="root" class="display-flex">
+<div id="mainLayout">
+    <section class="container-movies">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                    <h2 class="container-name">Latest Releases</h2>
+                    <div id="root" class="display-flex">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-btn">
-                    <div id="pagination" class="display-flex-buttons"></div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-btn">
+                        <div id="pagination" class="display-flex-buttons"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
 <script src="assets/api/api.js"></script>
 <script src="assets/data/data.js"></script>
 <script src="assets/movies/movies.js"></script>
 <script src="assets/buttons/createButtons.js"></script>
 <script src="assets/buttons/buttons.js"></script>
+<script src="assets/detail-movie/detailMovies.js"></script>
 
 </body>
 </html>

@@ -21,20 +21,16 @@
     justify-content: space-around;
 }
 
-.display-none {
-    display: none;
-}
-
-.display-inline {
+.display-relative {
     position: relative;
 }
 
-.display-inline:hover > img {
+.display-relative:hover > img {
     -webkit-filter: blur(3px);
     filter: blur(3px);
 }
 
-.display-inline:hover > p {
+.display-relative:hover > p {
     position: absolute;
     z-index: 1;
     text-shadow: black 0 2px 2px;
@@ -57,7 +53,7 @@
         display: block;
     }
 
-    .display-inline {
+    .display-relative {
         display: inline-block;
     }
 }
@@ -71,7 +67,6 @@
     .movie-image {
         width: 349px;
         height: 482px;
-
     }
 }
 
@@ -79,7 +74,6 @@
     .movie-image {
         width: 304px;
         height: 420px;
-
     }
 }
 
@@ -87,6 +81,5 @@
     .movie-image {
         width: 322px;
         height: 482px;
-
     }
 }

@@ -19,10 +19,10 @@ createNextBtn.setAttribute('id', 'nextBtn');
 createLastBtn.setAttribute('id', 'lastBtn');
 createPaginationBtn.setAttribute('id', 'paginationBtn');
 
-createFirstBtn.classList.add('button-footer');
+createFirstBtn.classList.add('button-footer', 'green-text');
 createPrevBtn.classList.add('button-footer');
 createNextBtn.classList.add('button-footer');
-createLastBtn.classList.add('button-footer');
-createPaginationBtn.classList.add('display-flex-buttons');
+createLastBtn.classList.add('button-footer', 'green-text');
+createPaginationBtn.classList.add('display-flex-buttons', 'new');
 
 pagination.append(createFirstBtn, createPrevBtn, createPaginationBtn);
