@@ -18,7 +18,7 @@
 }
 
 .movieImage {
-    margin-left: 20px;
+    margin-left: 100px;
     z-index: 1;
 }
 
@@ -51,5 +51,28 @@
     right: 0;
     left: 0;
     bottom: 0;
+}
 
+.detailBtnBack {
+    height: 45px;
+    width: 100px;
+    position: absolute;
+    padding: 10px;
+    top: 20px;
+    right: 0;
+    left: 20px;
+    bottom: 0;
+    z-index: 1;
+}
+
+.detailBtnNext {
+    height: 45px;
+    width: 100px;
+    position: absolute;
+    padding: 10px;
+    top: 20px;
+    right: 0;
+    left: 90%;
+    bottom: 0;
+    z-index: 1;
 }

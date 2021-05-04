@@ -11,12 +11,13 @@ detailMoviesId.addEventListener('click', (e) => {
     if (idNew) {
         mainLayout.classList.add('display-none');
         detailBlock.classList.remove('display-none');
-        filterDetailMovie(totalDB.results, idNew);
+        filterAndCreateMovie(totalDB.results, idNew);
     }
 })
 
-function filterDetailMovie(data, idNew) {
+function filterAndCreateMovie(data, idNew) {
     const newArrData = data.find(dataArr => dataArr.id === Number(idNew));
+    createDetailButtons();
     createDetailMovie(newArrData);
     createBackImage(newArrData);
     createDetailInfo(newArrData);
@@ -67,4 +68,18 @@ function createBackImage(data) {
     backgroundImage.classList.add('backImage');
 
     detailMovie.append(backgroundImage);
+}
+
+function createDetailButtons() {
+    const buttonDiv = document.createElement('div')
+    const backButton = document.createElement('div');
+    const nextButton = document.createElement('div');
+    backButton.textContent = 'Back to list';
+    nextButton.textContent = 'Next Movie';
+
+    backButton.classList.add('detailBtnBack');
+    nextButton.classList.add('detailBtnNext');
+
+    buttonDiv.append(backButton, nextButton)
+    detailMovie.append(buttonDiv);
 }
