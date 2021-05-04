@@ -17,8 +17,9 @@ detailMoviesId.addEventListener('click', (e) => {
 
 function filterDetailMovie(data, idNew) {
     const newArrData = data.find(dataArr => dataArr.id === Number(idNew));
-    console.log(newArrData);
     createDetailMovie(newArrData);
+    createBackImage(newArrData);
+    createDetailInfo(newArrData);
 }
 
 function createDetailMovie(data) {
@@ -28,8 +29,7 @@ function createDetailMovie(data) {
     imgDetail.setAttribute('src', poster_url);
     imgDetail.setAttribute('id', id);
     imgDetail.setAttribute('alt', original_title);
-
-    createDetailInfo(data);
+    imgDetail.classList.add('movieImage');
     detailMovie.append(imgDetail);
 }
 
@@ -49,12 +49,22 @@ function createDetailInfo(data) {
     overView.classList.add('movieInfo');
 
     movieName.textContent = original_title;
-    infoVote.textContent = vote_average;
-    releaseDate.textContent = release_date;
+    infoVote.textContent = `Score: ${vote_average}`;
+    releaseDate.textContent = `Release Date: ${release_date}`;
     overView.textContent = overview;
 
-
     divMain.append(movieName, infoVote, releaseDate, overView);
-
     detailMovie.append(divMain);
+}
+
+function createBackImage(data) {
+    const {original_title, poster_path} = data;
+    const backgroundImage = document.createElement('img');
+    const poster_url = 'https://image.tmdb.org/t/p/w300' + `${poster_path}`;
+
+    backgroundImage.setAttribute('src', poster_url);
+    backgroundImage.setAttribute('alt', original_title);
+    backgroundImage.classList.add('backImage');
+
+    detailMovie.append(backgroundImage);
 }

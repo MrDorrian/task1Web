@@ -1,26 +1,55 @@
 .detailDisplayFlex {
     display: flex;
-    flex-direction: row-reverse;
-    padding-top: 50px;
+    padding-top: 100px;
+    position: relative;
+    color: white;
 }
 
 .infoMovieBlock {
-    padding: 50px;
+    padding: 80px;
+    font-family: Comic Sans MS, sans-serif;
+    z-index: 1;
 }
 
 .movieName {
     font-size: 3em;
     margin-bottom: 20px;
+
+}
+
+.movieImage {
+    margin-left: 20px;
+    z-index: 1;
 }
 
 .inlineBlock {
     display: inline-block;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.inlineBlock + .inlineBlock {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 1px solid grey;
 }
 
 .movieInfo {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    padding: 20px 0;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
+
+}
+
+.backImage {
+    position: absolute;
+    -webkit-filter: blur(3px);
+    filter: blur(5px);
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
 
 }

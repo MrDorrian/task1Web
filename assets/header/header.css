@@ -8,6 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 5px 20px;
+    z-index: 1;
 }
 
 .header-name {
@@ -17,6 +18,7 @@
 .header-menu {
     border: 1px solid grey;
     border-radius: 5%;
+
 }
 
 .header-menu-name {
