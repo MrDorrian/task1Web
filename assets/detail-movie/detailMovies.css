@@ -1,0 +1,26 @@
+.detailDisplayFlex {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 50px;
+}
+
+.infoMovieBlock {
+    padding: 50px;
+}
+
+.movieName {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.inlineBlock {
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.movieInfo {
+    font-size: 1.5em;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+
+}
