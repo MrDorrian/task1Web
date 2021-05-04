@@ -1,12 +1,12 @@
 .detailDisplayFlex {
     display: flex;
-    padding-top: 100px;
+    padding-top: 150px;
     position: relative;
     color: white;
 }
 
 .infoMovieBlock {
-    padding: 80px;
+    padding: 100px;
     font-family: Comic Sans MS, sans-serif;
     z-index: 1;
 }
@@ -53,26 +53,27 @@
     bottom: 0;
 }
 
-.detailBtnBack {
-    height: 45px;
-    width: 100px;
+.buttonBlock {
+    margin-bottom: 40px;
+}
+
+.detailBtnBack, .detailBtnNext {
+    width: 150px;
+    height: 55px;
     position: absolute;
-    padding: 10px;
-    top: 20px;
+    padding: 15px;
     right: 0;
-    left: 20px;
+    top: 5%;
     bottom: 0;
     z-index: 1;
+    color: grey;
+    font-size: 1.5em;
+}
+
+.detailBtnBack {
+    left: 5%;
 }
 
 .detailBtnNext {
-    height: 45px;
-    width: 100px;
-    position: absolute;
-    padding: 10px;
-    top: 20px;
-    right: 0;
-    left: 90%;
-    bottom: 0;
-    z-index: 1;
+    left: 85%;
 }

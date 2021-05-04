@@ -27,10 +27,12 @@ function createDetailMovie(data) {
     const {id, original_title, poster_path} = data;
     const imgDetail = document.createElement('img');
     const poster_url = 'https://image.tmdb.org/t/p/w300' + `${poster_path}`;
+
     imgDetail.setAttribute('src', poster_url);
     imgDetail.setAttribute('id', id);
     imgDetail.setAttribute('alt', original_title);
     imgDetail.classList.add('movieImage');
+
     detailMovie.append(imgDetail);
 }
 
@@ -74,12 +76,32 @@ function createDetailButtons() {
     const buttonDiv = document.createElement('div')
     const backButton = document.createElement('div');
     const nextButton = document.createElement('div');
+
     backButton.textContent = 'Back to list';
     nextButton.textContent = 'Next Movie';
 
+    backButton.setAttribute('id', 'backButton');
+    nextButton.setAttribute('id', 'nextButton');
+
     backButton.classList.add('detailBtnBack');
     nextButton.classList.add('detailBtnNext');
+    buttonDiv.classList.add('buttonBlock');
 
     buttonDiv.append(backButton, nextButton)
     detailMovie.append(buttonDiv);
+
+    createFuncBtn();
+
+}
+
+function createFuncBtn() {
+    const getBackBtn = document.getElementById('backButton');
+    const getNextBtn = document.getElementById('nextButton');
+
+    getBackBtn.addEventListener('click', () => {
+
+    })
+    getNextBtn.addEventListener('click', () => {
+        alert('ok')
+    })
 }
