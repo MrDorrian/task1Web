@@ -73,7 +73,7 @@ function upgradePagination(CURRENT_PAGE) {
             newArrPagination.push(i);
             newArrPagination.shift(i);
         }
-    } else if (CURRENT_PAGE = newPagination.length) {
+    } else if (CURRENT_PAGE <= newPagination.length) {
         for (let i = CURRENT_PAGE; i >= CURRENT_PAGE - 4; i--) {
             newArrPagination.pop(i);
             newArrPagination.unshift(i);
