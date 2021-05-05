@@ -7,7 +7,7 @@
 
 .infoMovieBlock {
     padding: 100px;
-    font-family: Comic Sans MS, sans-serif;
+    font-family: Arial, sans-serif;
     z-index: 1;
 }
 
@@ -42,6 +42,16 @@
 
 }
 
+.addFavoriteBtn {
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 80%;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    padding: 15px;
+}
+
 .backImage {
     position: absolute;
     -webkit-filter: blur(3px);
@@ -58,7 +68,7 @@
 }
 
 .detailBtnBack, .detailBtnNext {
-    width: 150px;
+    width: 160px;
     height: 55px;
     position: absolute;
     padding: 15px;
@@ -76,4 +86,24 @@
 
 .detailBtnNext {
     left: 85%;
+}
+
+.detailBtnBack:hover {
+    text-shadow: 1px 1px 2px black;;
+}
+
+.detailBtnNext:hover {
+    text-shadow: 1px 1px 2px black;;
+}
+
+.addFavoriteBtn:hover {
+    box-shadow: 0 1px 5px var(--text-color);
+}
+
+.detailBtnBack:before {
+    background-image: url("/assets/img/outline_navigate_before_white_24dp.png");
+}
+
+.detailBtnNext:after {
+    background-image: url("/assets/img/outline_chevron_right_white_24dp.png");
 }

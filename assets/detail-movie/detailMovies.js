@@ -46,19 +46,22 @@ function createDetailInfo(data) {
     const infoVote = document.createElement('p');
     const overView = document.createElement('p');
     const releaseDate = document.createElement('p');
+    const addFavorite = document.createElement('div');
 
     divMain.classList.add('infoMovieBlock')
     movieName.classList.add('movieName');
     infoVote.classList.add('inlineBlock');
     releaseDate.classList.add('inlineBlock');
     overView.classList.add('movieInfo');
+    addFavorite.classList.add('addFavoriteBtn');
 
     movieName.textContent = original_title;
     infoVote.textContent = `Score: ${vote_average}`;
     releaseDate.textContent = `Release Date: ${release_date}`;
     overView.textContent = overview;
+    addFavorite.textContent = 'Add to favorite';
 
-    divMain.append(movieName, infoVote, releaseDate, overView);
+    divMain.append(addFavorite, movieName, infoVote, releaseDate, overView);
     detailMovie.append(divMain);
 }
 
