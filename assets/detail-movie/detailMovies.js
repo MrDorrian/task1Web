@@ -17,10 +17,12 @@ detailMoviesId.addEventListener('click', (e) => {
 
 function filterAndCreateMovie(data, idNew) {
     const newArrData = data.find(dataArr => dataArr.id === Number(idNew));
+    window.scrollTo({top: 100});
     createDetailButtons();
     createDetailMovie(newArrData);
     createBackImage(newArrData);
     createDetailInfo(newArrData);
+
 }
 
 function createDetailMovie(data) {
@@ -99,7 +101,13 @@ function createFuncBtn() {
     const getNextBtn = document.getElementById('nextButton');
 
     getBackBtn.addEventListener('click', () => {
-
+        if (detailMovie.firstChild) {
+            for (let i = 1; i <= 4; i++) {
+                detailMovie.removeChild(detailMovie.lastChild);
+            }
+            mainLayout.classList.remove('display-none');
+            detailBlock.classList.add('display-none');
+        }
     })
     getNextBtn.addEventListener('click', () => {
         alert('ok')

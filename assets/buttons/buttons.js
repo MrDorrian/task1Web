@@ -24,7 +24,10 @@ function dataButtons(data) {
                     getData(API_DATA + total_pages)
                         .then(response => response.json())
                         .then(data => {
+                            totalDB = data;
                             createMovies(data);
+                            upgradePagination(CURRENT_PAGE);
+                            createPagination(newArrPagination);
                         });
                 }
             });
@@ -34,7 +37,12 @@ function dataButtons(data) {
                     ++CURRENT_PAGE;
                     getData(API_DATA + CURRENT_PAGE)
                         .then(response => response.json())
-                        .then(data => createMovies(data));
+                        .then(data => {
+                            totalDB = data;
+                            createMovies(data);
+                            upgradePagination(CURRENT_PAGE);
+                            createPagination(newArrPagination);
+                        });
                 }
             });
         }
@@ -65,9 +73,13 @@ function upgradePagination(CURRENT_PAGE) {
             newArrPagination.push(i);
             newArrPagination.shift(i);
         }
+    } else if (CURRENT_PAGE = newPagination.length) {
+        for (let i = CURRENT_PAGE; i >= CURRENT_PAGE - 4; i--) {
+            newArrPagination.pop(i);
+            newArrPagination.unshift(i);
+        }
     }
 }
-
 
 createPagination(newArrPagination);
 
@@ -78,6 +90,7 @@ changeBtn.addEventListener('click', (e) => {
         getData(API_DATA + innerText)
             .then(response => response.json())
             .then(data => {
+                totalDB = data;
                 createMovies(data);
                 upgradePagination(CURRENT_PAGE);
                 createPagination(newArrPagination);
@@ -87,9 +100,15 @@ changeBtn.addEventListener('click', (e) => {
 
 
 firstBtn.addEventListener('click', () => {
+    CURRENT_PAGE = 1;
     getData(BASE_URL_DATA)
         .then(response => response.json())
-        .then(data => createMovies(data));
+        .then(data => {
+            totalDB = data;
+            createMovies(data);
+            upgradePagination(CURRENT_PAGE);
+            createPagination(newArrPagination);
+        });
 });
 
 prevBtn.addEventListener('click', () => {
@@ -97,7 +116,12 @@ prevBtn.addEventListener('click', () => {
         CURRENT_PAGE--;
         getData(API_DATA + CURRENT_PAGE)
             .then(response => response.json())
-            .then(data => createMovies(data));
+            .then(data => {
+                totalDB = data;
+                createMovies(data);
+                upgradePagination(CURRENT_PAGE);
+                createPagination(newArrPagination);
+            });
     }
 });
 
