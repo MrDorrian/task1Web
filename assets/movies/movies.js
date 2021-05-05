@@ -5,7 +5,9 @@ const movies = document.getElementById('root');
 function createMovies(data) {
     newMovie = [];
     movies.innerText = '';
-    newMovie = data.results.map((movie) => createCardImage(movie));
+    newMovie = data.results.map((movie) =>
+        createCardImage(movie)
+    );
     movies.append(...newMovie);
 }
 
@@ -15,12 +17,11 @@ function createCardImage(movie) {
     const img = document.createElement('img');
     const p = document.createElement('p');
 
-
     if (poster_path === null) {
         const poster_url = './assets/img/unnamed.jpg';
         img.setAttribute('src', poster_url);
     } else {
-        const poster_url = 'https://image.tmdb.org/t/p/w300' + `${poster_path}`;
+        const poster_url = 'https://image.tmdb.org/t/p/w300' + poster_path;
         img.setAttribute('src', poster_url);
     }
 
@@ -44,4 +45,5 @@ getData(BASE_URL_DATA)
         totalDB = data;
         createMovies(data);
         dataButtons(data);
+
     });

@@ -1,6 +1,5 @@
 'use strict';
 
-const mainLayout = document.getElementById('mainLayout');
 const detailMoviesId = document.getElementById('root');
 const detailBlock = document.getElementById('detailBlock');
 const detailMovie = document.getElementById('detailMovie');
@@ -22,6 +21,7 @@ function filterAndCreateMovie(data, idNew) {
     createDetailMovie(newArrData);
     createBackImage(newArrData);
     createDetailInfo(newArrData);
+    addToFavorite(newArrData);
 
 }
 
@@ -61,6 +61,8 @@ function createDetailInfo(data) {
     overView.textContent = overview;
     addFavorite.textContent = 'Add to favorite';
 
+    addFavorite.setAttribute('id', 'addFavorite');
+
     divMain.append(addFavorite, movieName, infoVote, releaseDate, overView);
     detailMovie.append(divMain);
 }
@@ -81,22 +83,27 @@ function createDetailButtons() {
     const buttonDiv = document.createElement('div')
     const backButton = document.createElement('div');
     const nextButton = document.createElement('div');
+    const backBtnImg = document.createElement('img');
+    const nextBtnImg = document.createElement('img');
 
     backButton.textContent = 'Back to list';
     nextButton.textContent = 'Next Movie';
 
     backButton.setAttribute('id', 'backButton');
     nextButton.setAttribute('id', 'nextButton');
+    backBtnImg.setAttribute('src', './assets/img/outline_navigate_before_white_24dp.png');
+    nextBtnImg.setAttribute('src', './assets/img/outline_chevron_right_white_24dp.png');
 
     backButton.classList.add('detailBtnBack');
     nextButton.classList.add('detailBtnNext');
     buttonDiv.classList.add('buttonBlock');
+    backBtnImg.classList.add('backBtnImg');
+    nextBtnImg.classList.add('nextBtnImg');
 
-    buttonDiv.append(backButton, nextButton)
+    buttonDiv.append(backBtnImg, backButton, nextButton, nextBtnImg)
     detailMovie.append(buttonDiv);
 
     createFuncBtn();
-
 }
 
 function createFuncBtn() {
@@ -114,5 +121,15 @@ function createFuncBtn() {
     })
     getNextBtn.addEventListener('click', () => {
         alert('ok')
+    })
+}
+
+function addToFavorite(data) {
+    const addFavorite = document.getElementById('addFavorite');
+    favoritesArray = JSON.parse(localStorage.getItem("favorite"));
+    addFavorite.addEventListener('click', () => {
+        favoritesArray.push(data);
+        localStorage.setItem('favorite', JSON.stringify(favoritesArray));
+
     })
 }

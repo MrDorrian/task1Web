@@ -26,6 +26,10 @@
     display: none;
 }
 
+.header-menu:hover {
+    box-shadow: 0 1px 5px var(--text-color);
+}
+
 .header-img {
     padding: 0 10px;
 }

@@ -14,3 +14,10 @@
 .display-none {
     display: none;
 }
+
+.detailDisplayFlex {
+    display: flex;
+    padding-top: 150px;
+    position: relative;
+    color: white;
+}
