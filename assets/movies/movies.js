@@ -12,7 +12,7 @@ function createMovies(data) {
 }
 
 function createCardImage(movie) {
-    const {id, title, poster_path} = movie;
+    const {id, original_title, poster_path} = movie;
     const div = document.createElement('div');
     const img = document.createElement('img');
     const p = document.createElement('p');
@@ -26,11 +26,11 @@ function createCardImage(movie) {
     }
 
     img.setAttribute('id', id);
-    img.setAttribute('alt', title);
+    img.setAttribute('alt', original_title);
     img.dataset.id = id;
     img.classList.add('movie-image');
 
-    p.textContent = title;
+    p.textContent = original_title;
     p.classList.add('display-none');
 
     div.classList.add('display-relative');
