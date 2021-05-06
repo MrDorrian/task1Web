@@ -1,3 +1,9 @@
+.detailDisplayFlex {
+    display: flex;
+    padding-top: 150px;
+    position: relative;
+    color: white;
+}
 
 .infoMovieBlock {
     padding: 100px;

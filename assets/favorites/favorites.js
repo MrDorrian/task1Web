@@ -1,15 +1,15 @@
+'use strict'
+
 const headerMenu = document.getElementById('headerMenu');
 const favoriteBlock = document.getElementById('favoriteBlock');
 const favoriteMovies = document.getElementById('favoriteMovies');
 let favorite = [];
 
-
 function filterAndCreateFavorite(data) {
-
-    favorite = data.map((fav) =>
-        createFavoriteMenu(fav)
-    );
-    favoriteMovies.append(...favorite);
+    favorite = data.map((fav) => {
+        createFavoriteMenu(fav);
+        favoriteMovies.append(...favorite);
+    });
 }
 
 function createFavoriteMenu(data) {
@@ -34,6 +34,11 @@ function createFavoriteMenu(data) {
     nameFavorite.textContent = title;
     overviewFavorite.textContent = overview;
 
+    favoriteBlock.classList.add('favoriteBlock');
+    favoriteInfo.classList.add('favoriteInfo');
+    nameFavorite.classList.add('nameFavorite');
+    overviewFavorite.classList.add('overviewFavorite');
+
     favoriteInfo.append(nameFavorite, overviewFavorite)
     favoriteBlock.append(imageFavorite, favoriteInfo);
 
@@ -42,8 +47,10 @@ function createFavoriteMenu(data) {
 
 headerMenu.addEventListener('click', () => {
     mainLayout.classList.add('display-none');
+    detailBlock.classList.add('display-none');
     favoriteBlock.classList.remove('display-none');
+
     let listFavorite = JSON.parse(localStorage.getItem("favorite"));
-    console.log(listFavorite)
     filterAndCreateFavorite(listFavorite);
 })
+

@@ -4,6 +4,7 @@
 @import url('movies/movies.css');
 @import url('buttons/buttons.css');
 @import url('detail-movie/detailMovies.css');
+@import url('favorites/favorite.css');
 
 :root {
     --background-color: #474d59;
@@ -15,9 +16,3 @@
     display: none;
 }
 
-.detailDisplayFlex {
-    display: flex;
-    padding-top: 150px;
-    position: relative;
-    color: white;
-}
