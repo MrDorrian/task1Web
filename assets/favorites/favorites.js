@@ -18,6 +18,7 @@ function createFavoriteMenu(data) {
     const imageFavorite = document.createElement('img');
     const nameFavorite = document.createElement('h2');
     const overviewFavorite = document.createElement('p');
+    const unfavoriteBtn = document.createElement('div');
     const {id, title, poster_path, overview} = data;
 
     if (poster_path === null) {
@@ -27,19 +28,21 @@ function createFavoriteMenu(data) {
         const favorUrl = 'https://image.tmdb.org/t/p/w300' + poster_path;
         imageFavorite.setAttribute('src', favorUrl);
     }
-
+    favoriteMovies.setAttribute('name', 'favorite');
     imageFavorite.setAttribute('id', id);
     imageFavorite.setAttribute('alt', title);
 
     nameFavorite.textContent = title;
     overviewFavorite.textContent = overview;
+    unfavoriteBtn.textContent = 'Unfavorite';
 
     favoriteBlock.classList.add('favoriteBlock');
     favoriteInfo.classList.add('favoriteInfo');
     nameFavorite.classList.add('nameFavorite');
     overviewFavorite.classList.add('overviewFavorite');
+    unfavoriteBtn.classList.add('unfavoriteBtn');
 
-    favoriteInfo.append(nameFavorite, overviewFavorite)
+    favoriteInfo.append(nameFavorite, unfavoriteBtn, overviewFavorite)
     favoriteBlock.append(imageFavorite, favoriteInfo);
 
     favoriteMovies.append(favoriteBlock);
@@ -50,7 +53,8 @@ headerMenu.addEventListener('click', () => {
     detailBlock.classList.add('display-none');
     favoriteBlock.classList.remove('display-none');
 
-    let listFavorite = JSON.parse(localStorage.getItem("favorite"));
+    let listFavorite = [];
+    listFavorite = JSON.parse(localStorage.getItem("favorite"));
     filterAndCreateFavorite(listFavorite);
 })
 

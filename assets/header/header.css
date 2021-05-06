@@ -13,6 +13,7 @@
 }
 
 .header-name {
+    margin-left: 5px;
     font-size: 2.5em;
 }
 
@@ -54,7 +55,7 @@
 
 @media screen and (min-width: 992px ) {
     .div-block {
-        padding: 20px;
+        padding: 15px 10px;
     }
 
 }
