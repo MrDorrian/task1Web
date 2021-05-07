@@ -3,14 +3,11 @@
 const headerMenu = document.getElementById('headerMenu');
 const favoriteBlock = document.getElementById('favoriteBlock');
 const favoriteMovies = document.getElementById('favoriteMovies');
-let favorite = [];
 
 function filterAndCreateFavorite(data) {
-    favorite = data.map((fav) => {
+    data.map((fav) => {
         createFavoriteMenu(fav);
-        favoriteMovies.append(...favorite);
     });
-    deleteFavorite();
 }
 
 function createFavoriteMenu(data) {
@@ -34,6 +31,7 @@ function createFavoriteMenu(data) {
     imageFavorite.setAttribute('alt', title);
     unFavoriteBtn.setAttribute('id', 'unFavoriteBtn');
     imageFavorite.dataset.id = id;
+    unFavoriteBtn.dataset.deleteId = id;
     nameFavorite.textContent = title;
     overviewFavorite.textContent = overview;
     unFavoriteBtn.textContent = 'Unfavorite';
@@ -60,34 +58,37 @@ headerMenu.addEventListener('click', () => {
             while (favoriteMovies.firstChild) {
                 favoriteMovies.removeChild(favoriteMovies.lastChild);
             }
-
         }
-
         listFavorite = JSON.parse(localStorage.getItem("favorite"));
         filterAndCreateFavorite(listFavorite);
+        deleteFavoriteBtn();
     }
 )
 
 
-function deleteFavorite() {
-    const new2 = document.querySelector('.nameFavorite');
-    let unFavorite = document.getElementsByClassName('unFavoriteBtn');
-
-
+function deleteFavoriteBtn() {
+    let unFavorite = [...document.getElementsByClassName('unFavoriteBtn')];
+    unFavorite.map((fav) => {
+        fav.addEventListener('click', (e) => {
+            const {target: {dataset: {deleteId}}} = e;
+            deleteFromLocal(deleteId)
+        })
+    })
 }
 
 favoriteMovies.addEventListener('click', (e) => {
         const {target: {dataset: {id}}} = e;
         let idFavoritNew = id;
         if (idFavoritNew) {
-            if (detailMovie.firstChild) {
-                for (let i = 1; i <= 4; i++) {
-                    detailMovie.removeChild(detailMovie.lastChild);
-                }
-                favoriteBlock.classList.add('display-none');
-                detailBlock.classList.remove('display-none');
-                filterAndCreateMovie(totalDB.results, idFavoritNew);
-            }
+            favoriteBlock.classList.add('display-none');
+            detailBlock.classList.remove('display-none');
+            filterAndCreateMovie(totalDB.results, idFavoritNew);
         }
     }
 )
+
+function deleteFromLocal(delId) {
+    const getMovieArray = JSON.parse(localStorage.getItem("favorite"));
+    let deleteMovieArray = getMovieArray.find((dma) => dma.id === Number(delId))
+
+}
