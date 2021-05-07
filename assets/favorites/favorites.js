@@ -88,10 +88,11 @@ favoriteMovies.addEventListener('click', (e) => {
 )
 
 function deleteFromLocal(delId) {
-    let getMovieArray = [];
-    getMovieArray = JSON.parse(localStorage.getItem("favorite"));
+    let getMovieArray = JSON.parse(localStorage.getItem("favorite"));
     let deleteMovieArray = getMovieArray.find((dma) => dma.id === Number(delId))
     let indexDelete = getMovieArray.indexOf(deleteMovieArray);
-
-
+    let newarrrr = [];
+    newarrrr.push(getMovieArray.slice(indexDelete, 1))
+    localStorage.clear();
+    localStorage.setItem('favorite', JSON.stringify(newarrrr));
 }
