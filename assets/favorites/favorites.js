@@ -10,6 +10,7 @@ function filterAndCreateFavorite(data) {
         createFavoriteMenu(fav);
         favoriteMovies.append(...favorite);
     });
+    deleteFavorite();
 }
 
 function createFavoriteMenu(data) {
@@ -18,7 +19,7 @@ function createFavoriteMenu(data) {
     const imageFavorite = document.createElement('img');
     const nameFavorite = document.createElement('h2');
     const overviewFavorite = document.createElement('p');
-    const unfavoriteBtn = document.createElement('div');
+    const unFavoriteBtn = document.createElement('div');
     const {id, title, poster_path, overview} = data;
 
     if (poster_path === null) {
@@ -31,30 +32,62 @@ function createFavoriteMenu(data) {
     favoriteMovies.setAttribute('name', 'favorite');
     imageFavorite.setAttribute('id', id);
     imageFavorite.setAttribute('alt', title);
-
+    unFavoriteBtn.setAttribute('id', 'unFavoriteBtn');
+    imageFavorite.dataset.id = id;
     nameFavorite.textContent = title;
     overviewFavorite.textContent = overview;
-    unfavoriteBtn.textContent = 'Unfavorite';
+    unFavoriteBtn.textContent = 'Unfavorite';
 
     favoriteBlock.classList.add('favoriteBlock');
     favoriteInfo.classList.add('favoriteInfo');
     nameFavorite.classList.add('nameFavorite');
     overviewFavorite.classList.add('overviewFavorite');
-    unfavoriteBtn.classList.add('unfavoriteBtn');
+    unFavoriteBtn.classList.add('unFavoriteBtn');
 
-    favoriteInfo.append(nameFavorite, unfavoriteBtn, overviewFavorite)
+    favoriteInfo.append(nameFavorite, unFavoriteBtn, overviewFavorite)
     favoriteBlock.append(imageFavorite, favoriteInfo);
 
     favoriteMovies.append(favoriteBlock);
 }
 
 headerMenu.addEventListener('click', () => {
-    mainLayout.classList.add('display-none');
-    detailBlock.classList.add('display-none');
-    favoriteBlock.classList.remove('display-none');
+        mainLayout.classList.add('display-none');
+        detailBlock.classList.add('display-none');
+        favoriteBlock.classList.remove('display-none');
+        let listFavorite = [];
 
-    let listFavorite = [];
-    listFavorite = JSON.parse(localStorage.getItem("favorite"));
-    filterAndCreateFavorite(listFavorite);
-})
+        if (favoriteMovies.firstChild) {
+            while (favoriteMovies.firstChild) {
+                favoriteMovies.removeChild(favoriteMovies.lastChild);
+            }
 
+        }
+
+        listFavorite = JSON.parse(localStorage.getItem("favorite"));
+        filterAndCreateFavorite(listFavorite);
+    }
+)
+
+
+function deleteFavorite() {
+    const new2 = document.querySelector('.nameFavorite');
+    let unFavorite = document.getElementsByClassName('unFavoriteBtn');
+
+
+}
+
+favoriteMovies.addEventListener('click', (e) => {
+        const {target: {dataset: {id}}} = e;
+        let idFavoritNew = id;
+        if (idFavoritNew) {
+            if (detailMovie.firstChild) {
+                for (let i = 1; i <= 4; i++) {
+                    detailMovie.removeChild(detailMovie.lastChild);
+                }
+                favoriteBlock.classList.add('display-none');
+                detailBlock.classList.remove('display-none');
+                filterAndCreateMovie(totalDB.results, idFavoritNew);
+            }
+        }
+    }
+)

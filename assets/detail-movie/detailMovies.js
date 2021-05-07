@@ -16,18 +16,18 @@ detailMoviesId.addEventListener('click', (e) => {
 })
 
 function filterAndCreateMovie(data, idNew) {
-    const newArrData = data.find(dataArr => dataArr.id === Number(idNew));
+    const newArrData = data.find(dataArr => dataArr.id === Number(idNew))
     window.scrollTo({top: 100});
     createDetailButtons();
     createDetailMovie(newArrData);
     createBackImage(newArrData);
     createDetailInfo(newArrData);
     checkFavoriteFile(newArrData, idNew);
+    nextDetailMovie(data, idNew);
 }
 
 function createFuncBtn() {
     const getBackBtn = document.getElementById('backButton');
-    const getNextBtn = document.getElementById('nextButton');
 
     getBackBtn.addEventListener('click', () => {
         if (detailMovie.firstChild) {
@@ -37,9 +37,6 @@ function createFuncBtn() {
             mainLayout.classList.remove('display-none');
             detailBlock.classList.add('display-none');
         }
-    })
-    getNextBtn.addEventListener('click', () => {
-        alert('ok')
     })
 }
 
@@ -54,14 +51,16 @@ function checkFavoriteFile(data, id) {
             addFavorite.classList.remove('addFavoriteBtn');
             addFavorite.classList.add('hideBtnFavorite');
         }
-        addFavoriteFilm(data);
     }
+    addFavoriteFilm(data);
 
 }
 
 function addFavoriteFilm(data) {
+
     addFavorite.addEventListener('click', () => {
         let favoritesArray = [];
+
         if (localStorage.getItem('favorite')) {
             favoritesArray = JSON.parse(localStorage.getItem("favorite"));
         }
@@ -71,3 +70,21 @@ function addFavoriteFilm(data) {
         addFavorite.classList.add('hideBtnFavorite');
     })
 }
+
+function nextDetailMovie(data, nextId) {
+    const getNextBtn = document.getElementById('nextButton');
+    getNextBtn.addEventListener('click', () => {
+            let newArrData1 = data.find(dataArr => dataArr.id === Number(nextId))
+            let newIndexDataArr = data.indexOf(newArrData1)
+            let nextMovieCreate = data[newIndexDataArr + 1]
+
+            if (detailMovie.firstChild) {
+                for (let i = 1; i <= 4; i++) {
+                    detailMovie.removeChild(detailMovie.lastChild);
+                }
+            }
+            filterAndCreateMovie(data, nextMovieCreate.id);
+        }
+    )
+}
+
