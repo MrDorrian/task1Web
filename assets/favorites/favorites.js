@@ -91,8 +91,9 @@ function deleteFromLocal(delId) {
     let getMovieArray = JSON.parse(localStorage.getItem("favorite"));
     let deleteMovieArray = getMovieArray.find((dma) => dma.id === Number(delId))
     let indexDelete = getMovieArray.indexOf(deleteMovieArray);
+    getMovieArray.splice(indexDelete, 1);
     let newarrrr = [];
-    newarrrr.push(getMovieArray.slice(indexDelete, 1))
-    localStorage.clear();
+    newarrrr = getMovieArray;
+
     localStorage.setItem('favorite', JSON.stringify(newarrrr));
 }
