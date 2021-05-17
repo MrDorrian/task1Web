@@ -30,6 +30,7 @@ function createFavoriteMenu(data) {
     imageFavorite.setAttribute('id', id);
     imageFavorite.setAttribute('alt', title);
     unFavoriteBtn.setAttribute('id', 'unFavoriteBtn');
+
     imageFavorite.dataset.id = id;
     unFavoriteBtn.dataset.deleteId = id;
     nameFavorite.textContent = title;
@@ -92,8 +93,12 @@ function deleteFromLocal(delId) {
     let deleteMovieArray = getMovieArray.find((dma) => dma.id === Number(delId))
     let indexDelete = getMovieArray.indexOf(deleteMovieArray);
     getMovieArray.splice(indexDelete, 1);
-    let newarrrr = [];
-    newarrrr = getMovieArray;
-
-    localStorage.setItem('favorite', JSON.stringify(newarrrr));
+    localStorage.setItem('favorite', JSON.stringify(getMovieArray));
+    if (favoriteMovies.firstChild) {
+        while (favoriteMovies.firstChild) {
+            favoriteMovies.removeChild(favoriteMovies.lastChild);
+        }
+    }
+    filterAndCreateFavorite(getMovieArray);
+    deleteFavoriteBtn();
 }

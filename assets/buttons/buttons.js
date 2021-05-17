@@ -9,7 +9,6 @@ const newPagination = [];
 
 function dataButtons(data) {
     const {page, total_pages} = data;
-
     for (let i = page; i <= total_pages; i++) {
         newPagination.push(i);
         if (i >= total_pages) {
@@ -40,7 +39,9 @@ function dataButtons(data) {
                         .then(data => {
                             totalDB = data;
                             createMovies(data);
-                            upgradePagination(CURRENT_PAGE);
+                            if (CURRENT_PAGE >= 3) {
+                                upgradePagination(CURRENT_PAGE);
+                            }
                             createPagination(newArrPagination);
                         });
                 }
@@ -69,14 +70,22 @@ function createPagination(newArr) {
 
 function upgradePagination(CURRENT_PAGE) {
     if (CURRENT_PAGE + 4 <= newPagination.length) {
-        for (let i = CURRENT_PAGE; i <= CURRENT_PAGE + 4; i++) {
+        for (let i = CURRENT_PAGE; i <= CURRENT_PAGE + 5; i++) {
             newArrPagination.push(i);
             newArrPagination.shift(i);
         }
-    } else if (CURRENT_PAGE <= newPagination.length) {
+        for (let i = CURRENT_PAGE; i >= CURRENT_PAGE - 2; i--) {
+            newArrPagination.pop(i);
+            newArrPagination.unshift(i);
+        }
+    } else {
         for (let i = CURRENT_PAGE; i >= CURRENT_PAGE - 4; i--) {
             newArrPagination.pop(i);
             newArrPagination.unshift(i);
+        }
+        for (let i = CURRENT_PAGE; i <= CURRENT_PAGE - 4; i++) {
+            newArrPagination.push(i);
+            newArrPagination.shift(i);
         }
     }
 }
@@ -112,7 +121,7 @@ firstBtn.addEventListener('click', () => {
 });
 
 prevBtn.addEventListener('click', () => {
-    if (CURRENT_PAGE >= 2) {
+    if (CURRENT_PAGE >= 4) {
         CURRENT_PAGE--;
         getData(API_DATA + CURRENT_PAGE)
             .then(response => response.json())
