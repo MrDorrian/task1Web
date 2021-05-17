@@ -1,8 +1,8 @@
 .detailDisplayFlex {
     display: flex;
     padding-top: 150px;
-    position: relative;
     color: white;
+    position: relative;
 }
 
 .infoMovieBlock {
@@ -45,10 +45,12 @@
     width: 150px;
     height: 40px;
     position: absolute;
+    top: 30%;
     left: 80%;
-    border: 1px solid var(--text-color);
+    border: 1px solid dimgrey;
     border-radius: 5px;
-    padding: 15px;
+    padding: 13px 20px;
+    text-shadow: 1px 1px 1px black;
 }
 
 .backImage {
@@ -98,7 +100,8 @@
 }
 
 .addFavoriteBtn:hover {
-    box-shadow: 0 1px 5px var(--text-color);
+    box-shadow: 0 1px 5px darkred;
+
 }
 
 .backBtnImg {
